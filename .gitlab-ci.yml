@@ -1,0 +1,9 @@
+development:
+  type: deploy
+  script:
+    - apk update
+    - apk add git curl ruby ruby-rdoc
+    - gem install dpl
+    - dpl --provider=heroku --app=<heroku-app-name> --api-key=$HEROKU_API_KEY
+  only:
+    - develop

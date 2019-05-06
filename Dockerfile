@@ -1,1 +1,1 @@
-FROM jshimko/meteor-launchpad:latest
+FROM levonsargsyan1990/meteor-launchpad:latest
