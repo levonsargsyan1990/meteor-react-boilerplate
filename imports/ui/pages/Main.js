@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
-import {
-  withRouter, Route, Switch,
-} from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { Loader, Dimmer } from 'semantic-ui-react';
 import isEqual from 'lodash/isEqual';
 import Layout from '../layouts/Layout';
@@ -66,9 +62,9 @@ const RegistrationRoute = ({ component: Content, user, ...rest }) => {
 */
 
 class Main extends Component {
-  shouldComponentUpdate({ user, location: { pathname } }) {
-    const { user: oldUser, location: { pathname: oldPathname } } = this.props;
-    return !(isEqual(user, oldUser) && pathname === oldPathname);
+  shouldComponentUpdate({ user, path }) {
+    const { user: oldUser, path: oldPath } = this.props;
+    return !(isEqual(user, oldUser) && path === oldPath);
   }
 
   render() {
@@ -82,13 +78,11 @@ class Main extends Component {
     }
     return (
       <Layout>
-        <Switch>
-          {/*
-          <DashboardRoute user={user} exact path="/exchange" component={Exchange} />
-          <RegistrationRoute user={user} path="/signup" component={Signup} />
-          */}
-          <Route path="/" component={Sample} />
-        </Switch>
+        {/*
+        <DashboardRoute user={user} exact path="/exchange" component={Exchange} />
+        <RegistrationRoute user={user} path="/signup" component={Signup} />
+        */}
+        <Sample path="/" />
       </Layout>
     );
   }
@@ -99,7 +93,7 @@ Main.propTypes = {
     _id: PropTypes.string.isRequired,
   }),
   isLoggingIn: PropTypes.bool.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 Main.defaultProps = {
@@ -111,4 +105,4 @@ const meteorWrappedComponent = withTracker(() => ({
   isLoggingIn: Meteor.loggingIn(),
 }))(Main);
 
-export default withRouter(meteorWrappedComponent);
+export default meteorWrappedComponent;

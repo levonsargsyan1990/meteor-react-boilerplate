@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.4",
+    "@reach/router": "^1.2.1",
     "bcrypt": "^3.0.4",
     "lodash": "^4.17.11",
     "meteor-node-stubs": "^0.4.1",
@@ -19,8 +20,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^6.0.1",
-    "react-router-dom": "^4.3.1",
-    "react-router-prop-types": "^1.0.4",
     "redux": "^4.0.1",
     "redux-promise": "^0.6.0",
     "semantic-ui-react": "^0.85.0",

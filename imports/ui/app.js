@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import promise from 'redux-promise';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router } from '@reach/router';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
@@ -30,9 +30,7 @@ const App = () => (
     <ThemeProvider theme={theme}>
       <>
         <Router>
-          <Switch>
-            <Route path="/" component={Main} />
-          </Switch>
+          <Main path="/" />
         </Router>
         <GlobalStyle />
       </>
